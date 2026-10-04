@@ -10,12 +10,45 @@ services:
 
     environment:
       POSTGRES_USER: postgres_admin
-      POSTGRES_PASSWORD: example
+      # ИЗМЕНЕНО ПО ЛАБОРАТОРНОЙ РАБОТЕ 4 В СООТВЕТСТВИИ С ПРОБЛЕМОЙ 1
+      # (пароль администратора был записан здесь открытым текстом и опубликован в репозитории;
+      #  теперь он читается из секрета Docker — файла secrets/db_admin_password.txt)
+      # POSTGRES_PASSWORD: example
+      POSTGRES_PASSWORD_FILE: /run/secrets/db_admin_password
       POSTGRES_DB: testdb
       POSTGRES_INITDB_ARGS: "--locale-provider=icu --icu-locale=ru_RU.UTF-8"
 
+    # ДОБАВЛЕНО ПО ЛАБОРАТОРНОЙ РАБОТЕ 4 В СООТВЕТСТВИИ С ПРОБЛЕМОЙ 1
+    # Пароли передаются в контейнер как секреты Docker (см. раздел secrets в конце файла)
+    secrets:
+      - db_admin_password
+      - app_user_password
+      - app_manager_password
+
+    # ДОБАВЛЕНО ПО ЛАБОРАТОРНОЙ РАБОТЕ 4 В СООТВЕТСТВИИ С ПРОБЛЕМАМИ 3 И 5
+    # ssl=on и файлы сертификата — шифрование соединений с СУБД (ПРОБЛЕМА 5),
+    #   сертификат создаётся в db/Dockerfile;
+    # auth_delay — пауза 2 секунды после каждой неудачной попытки входа,
+    #   сильно замедляет подбор пароля (ПРОБЛЕМА 3).
+    command:
+      - postgres
+      - -c
+      - ssl=on
+      - -c
+      - ssl_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem
+      - -c
+      - ssl_key_file=/etc/ssl/private/ssl-cert-snakeoil.key
+      - -c
+      - shared_preload_libraries=auth_delay
+      - -c
+      - auth_delay.milliseconds=2000
+
     ports:
-      - "5432:5432"
+      # ИЗМЕНЕНО ПО ЛАБОРАТОРНОЙ РАБОТЕ 4 В СООТВЕТСТВИИ С ПРОБЛЕМОЙ 2
+      # (порт был открыт на всех сетевых интерфейсах — к СУБД можно было подключиться из локальной сети;
+      #  теперь подключиться можно только с этого компьютера)
+      # - "5432:5432"
+      - "127.0.0.1:5432:5432"
 
     volumes:
       - postgres_data:/var/lib/postgresql
@@ -25,8 +58,40 @@ services:
   adminer:
     image: adminer
     restart: always
+    # ИЗМЕНЕНО ПО ЛАБОРАТОРНОЙ РАБОТЕ 4 В СООТВЕТСТВИИ С ПРОБЛЕМАМИ 2 И 5
+    # (Adminer был доступен по незашифрованному HTTP со всех сетевых интерфейсов;
+    #  теперь его порт наружу не публикуется — Adminer открывается только через
+    #  HTTPS-прокси adminer-https и только с этого компьютера: https://localhost:8443)
+    # ports:
+    #   - "8080:8080"
+
+  # ДОБАВЛЕНО ПО ЛАБОРАТОРНОЙ РАБОТЕ 4 В СООТВЕТСТВИИ С ПРОБЛЕМАМИ 2 И 5
+  # HTTPS для Adminer: Caddy принимает запросы на https://localhost:8443 и пересылает их в Adminer.
+  # Сертификат Caddy выпускает сам (свой локальный центр сертификации), поэтому браузер
+  # при первом входе покажет предупреждение — его нужно принять.
+  adminer-https:
+    image: caddy:2
+    restart: always
+    depends_on:
+      - adminer
+    command: caddy reverse-proxy --from https://localhost:8443 --to adminer:8080 --internal-certs
     ports:
-      - "8080:8080"
+      # ПРОБЛЕМА 2: доступ только с этого компьютера
+      - "127.0.0.1:8443:8443"
+
+  # ДОБАВЛЕНО ПО ЛАБОРАТОРНОЙ РАБОТЕ 4 В СООТВЕТСТВИИ С ПРОБЛЕМОЙ 5
+  # Резервное копирование: скрипт db/backup.sh раз в сутки делает pg_dump в папку ./backups
+  backup:
+    image: postgres:18
+    restart: always
+    depends_on:
+      - db
+    secrets:
+      - db_admin_password
+    entrypoint: ["sh", "/backup.sh"]
+    volumes:
+      - ./db/backup.sh:/backup.sh:ro
+      - ./backups:/backups
 
   app:
     image: rzps-app:1.0
@@ -42,3 +107,14 @@ services:
 
 volumes:
   postgres_data:
+
+# ДОБАВЛЕНО ПО ЛАБОРАТОРНОЙ РАБОТЕ 4 В СООТВЕТСТВИИ С ПРОБЛЕМОЙ 1
+# Пароли хранятся в папке secrets/ — она в .gitignore и в репозиторий не попадает.
+# Перед первым запуском создайте три файла, в каждом — только пароль, без пустой строки в конце.
+secrets:
+  db_admin_password:
+    file: ./secrets/db_admin_password.txt
+  app_user_password:
+    file: ./secrets/app_user_password.txt
+  app_manager_password:
+    file: ./secrets/app_manager_password.txt

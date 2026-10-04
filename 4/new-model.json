@@ -1,0 +1,2041 @@
+{
+  "version": "2.6.2",
+  "summary": {
+    "title": "Модель угроз: консольное приложение интернет-магазина (задание №3)",
+    "owner": "Саламон Михаил Иванович",
+    "description": "Консольное приложение на Python (psycopg 3) для работы с БД интернет-магазина в PostgreSQL 18. Запуск через Docker Compose: контейнеры db (PostgreSQL, порт 5432), adminer (веб-интерфейс, порт 8080) и app (приложение). Пользователь вводит логин и пароль app_user и через меню просматривает, изменяет и добавляет данные. Журнал пишется в файл logs/app.log на хосте.\n",
+    "id": 0
+  },
+  "detail": {
+    "contributors": [],
+    "diagrams": [
+      {
+        "id": 0,
+        "title": "DFD: приложение из задания №3",
+        "diagramType": "STRIDE",
+        "placeholder": "New STRIDE diagram description",
+        "thumbnail": "./public/content/images/thumbnail.stride.jpg",
+        "version": "2.6.2",
+        "cells": [
+          {
+            "position": {
+              "x": 45,
+              "y": 485
+            },
+            "size": {
+              "width": 310,
+              "height": 250
+            },
+            "attrs": {
+              "label": {
+                "text": "Файловая система хоста"
+              }
+            },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "id": "570c91ec-8fe6-4874-a25e-f0ee13d47ca3",
+            "zIndex": -1,
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "Файловая система хоста",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false,
+              "crossingFlows": [
+                "c1e50598-968c-4a2a-a230-2dc7d22d529e",
+                "9b360a7c-3e86-4345-8a8f-c73607cf618f"
+              ],
+              "containedElements": [
+                "83333cad-bc8e-4638-974a-f3f469507ff4",
+                "e9c95883-5103-4d29-aad0-fe84165b451a"
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": 141.99999999999886,
+              "y": -189.99999999999937
+            },
+            "size": {
+              "width": 880,
+              "height": 640
+            },
+            "attrs": {
+              "label": {
+                "text": "Docker-сеть rzps__3_default"
+              }
+            },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "id": "e63af243-ef9b-435e-a556-394271206c90",
+            "zIndex": -1,
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "Docker-сеть rzps__3_default",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false,
+              "crossingFlows": [
+                "825a3dcc-01fc-4b84-80e9-b7196d270a03",
+                "4ecb5c2f-737e-4178-b18b-bc0ca710278d",
+                "c1e50598-968c-4a2a-a230-2dc7d22d529e",
+                "9b360a7c-3e86-4345-8a8f-c73607cf618f",
+                "4a1e9f8c-cf2e-46bc-97d9-33dc437a8ff9",
+                "4a6f45a9-d7b6-43eb-93a3-920081e4d35f"
+              ],
+              "containedElements": [
+                "74e3a679-3a7f-4ae3-9988-a6619ea9fba4",
+                "0b9d4266-381a-4972-a3e4-37be72a66276",
+                "0e4306af-ebee-4cfd-9f19-110a32b7a8cf"
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": 560,
+              "y": 530
+            },
+            "size": {
+              "width": 110,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "E1. Оператор"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "f4d0dd56-1e4b-46e1-8b6b-9b7d3c8a786b"
+                },
+                {
+                  "group": "right",
+                  "id": "2b7ebee4-d9c4-4749-bf89-4a2ec0222757"
+                },
+                {
+                  "group": "bottom",
+                  "id": "8c2be464-ea8b-42a2-a4b0-d746e6e43946"
+                },
+                {
+                  "group": "left",
+                  "id": "9d29f721-8d15-4ebb-bbaf-6fb2baeeaaf6"
+                }
+              ]
+            },
+            "id": "c5fa78fb-2353-44ff-a986-44cc275b60d4",
+            "zIndex": 1,
+            "data": {
+              "type": "tm.Actor",
+              "name": "E1. Оператор",
+              "description": "",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "providesAuthentication": false,
+              "threats": [
+                {
+                  "id": "3befc891-6e8f-4064-99f1-9fa7a957753e",
+                  "number": 34,
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "title": "УГ-01. Подбор пароля учётной записи app_user",
+                  "type": "Spoofing",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "score": "8,0",
+                  "description": "Пароль app_user словарный (AppPassword123). Ни приложение, ни PostgreSQL не ограничивают число неудачных попыток входа, а порт 5432 опубликован на хосте. Нарушитель перебирает пароли по словарю напрямую к СУБД или через приложение и выдаёт себя за оператора.",
+                  "mitigation": "Сложный пароль; ограничение числа попыток (задержка после неудачного входа, расширение auth_delay, fail2ban); публикация порта 5432 только на 127.0.0.1 или отказ от публикации."
+                }
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": 720,
+              "y": 530
+            },
+            "size": {
+              "width": 200,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "E2. Администратор БД"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "f4d0dd56-1e4b-46e1-8b6b-9b7d3c8a786b"
+                },
+                {
+                  "group": "right",
+                  "id": "2b7ebee4-d9c4-4749-bf89-4a2ec0222757"
+                },
+                {
+                  "group": "bottom",
+                  "id": "8c2be464-ea8b-42a2-a4b0-d746e6e43946"
+                },
+                {
+                  "group": "left",
+                  "id": "9d29f721-8d15-4ebb-bbaf-6fb2baeeaaf6"
+                }
+              ]
+            },
+            "id": "1ce789f8-d1e8-49cf-a819-7209e2ac0898",
+            "zIndex": 2,
+            "data": {
+              "type": "tm.Actor",
+              "name": "E2. Администратор БД",
+              "description": "",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "providesAuthentication": false,
+              "threats": []
+            }
+          },
+          {
+            "position": {
+              "x": 220,
+              "y": -140
+            },
+            "size": {
+              "width": 260,
+              "height": 270
+            },
+            "attrs": {
+              "text": {
+                "text": "P1. Консольное приложение app.py"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "a0012fee-775d-4b33-8ee7-1ffa65179f71"
+                },
+                {
+                  "group": "right",
+                  "id": "3fd0f7fa-2ea2-43c4-9173-f97ba0b55aff"
+                },
+                {
+                  "group": "bottom",
+                  "id": "fc5f57b3-bd9f-4dd3-8a85-02d4fa65e6e4"
+                },
+                {
+                  "group": "left",
+                  "id": "1d2a5029-060e-42bf-a526-4dcdb9f5087b"
+                }
+              ]
+            },
+            "id": "74e3a679-3a7f-4ae3-9988-a6619ea9fba4",
+            "zIndex": 3,
+            "data": {
+              "type": "tm.Process",
+              "name": "P1. Консольное приложение app.py",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "root",
+              "threats": [
+                {
+                  "id": "238dc686-47a4-4c61-ba32-18e54f7a3dc7",
+                  "title": "УГ-16. Выполнение кода с правами root в контейнере приложения (Least privilege)",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Elevation of privilege",
+                  "description": "В Dockerfile приложения нет инструкции USER, поэтому процесс работает от root. Нет read_only, cap_drop, no-new-privileges. При эксплуатации уязвимости в Python или psycopg нарушитель получает root в контейнере и запись в смонтированную папку logs",
+                  "mitigation": "USER appuser в Dockerfile; read_only: true; cap_drop: [ALL]; security_opt: no-new-privileges:true",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 4,
+                  "score": "5,4"
+                },
+                {
+                  "id": "f06b3793-c077-44d7-a90b-2511bc87240e",
+                  "title": "Сканирование уязвимостей (Vulnerability scanning)",
+                  "status": "NotApplicable",
+                  "severity": "Low",
+                  "type": "Information disclosure",
+                  "description": "Не применима. P1 — консольное приложение без сетевого интерфейса: оно не слушает порты, поэтому его нельзя просканировать по сети. Сканирование актуально для Adminer и СУБД — учтено в УГ-15 (угроза #8)",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 5,
+                  "score": ""
+                },
+                {
+                  "id": "9dadd7b5-437a-4a46-ab76-6ff7417c5263",
+                  "title": "Злоупотребление скоростью (Expedition)",
+                  "status": "NotApplicable",
+                  "severity": "Low",
+                  "type": "Tampering",
+                  "description": "Не применима. Угроза относится к сервисам, где скорость запросов даёт нарушителю выгоду (покупки, бронирования, лимиты). Приложение — внутренний инструмент оператора без внешних клиентов и конкурентных операций.",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 9,
+                  "score": ""
+                },
+                {
+                  "id": "2d0abde3-33de-4ce5-aeac-6a077a4b20af",
+                  "title": "УГ-14. Блокировки из-за транзакции, открытой во время ввода (Denial of Service)",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Denial of service",
+                  "description": " В пунктах 7 и 9 заказ вставляется сразу, после чего транзакция остаётся открытой, пока оператор вводит товары. Если оператор отошёл, транзакция висит бесконечно, удерживает блокировки и мешает ALTER TABLE и VACUUM.",
+                  "mitigation": "Собирать весь ввод до начала транзакции; idle_in_transaction_session_timeout на стороне СУБД",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 33,
+                  "score": "5,2"
+                },
+                {
+                  "id": "b56d3b7c-1d60-4d8a-870c-0fe88c044449",
+                  "number": 38,
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "title": "УГ-05. Внедрение вредоносного кода через зависимости и базовые образы",
+                  "type": "Tampering",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "score": "5,4",
+                  "description": "psycopg устанавливается без фиксации версии и хэша, образы python:3.13-slim, postgres:18 и adminer берутся без фиксации digest. При компрометации пакета или образа вредоносный код получит пароль, который вводит оператор, и доступ к БД.",
+                  "mitigation": "requirements.txt с точными версиями и pip install --require-hashes; закрепление образов по digest; сканирование образов (Trivy, Docker Scout)."
+                },
+                {
+                  "id": "34886b1a-ef99-4ef0-ad6c-97f8c35b2d63",
+                  "number": 39,
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "title": "УГ-06. SQL-инъекция через вводимые значения и названия колонок",
+                  "type": "Tampering",
+                  "status": "Mitigated",
+                  "severity": "Medium",
+                  "score": "4,4",
+                  "description": "Оператор вводит SQL-код в значение фильтра или пытается подставить своё имя колонки. В приложении уже реализована защита: значения передаются только через плейсхолдеры %s, имена таблиц и колонок выбираются по номеру из белого списка TABLES и вставляются через sql.Identifier, для IN создаётся отдельный плейсхолдер на каждое значение. Проверено вводом ' OR 1=1; DROP TABLE customers; --. Остаётся риск ошибки при доработке кода.",
+                  "mitigation": "Реализовано: параметризованные запросы, белый список, sql.Identifier. Дополнительно: код-ревью и автотесты на инъекции при каждом изменении."
+                },
+                {
+                  "id": "cc606f5d-e444-4350-a7bf-d00092fbe368",
+                  "number": 40,
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "title": "УГ-07. Отказ оператора от совершённых изменений",
+                  "type": "Repudiation",
+                  "status": "Open",
+                  "severity": "High",
+                  "score": "6,8",
+                  "description": "Все операторы работают под одной учётной записью app_user. В журнал пишется только название пункта меню — без таблицы, id записи, старых и новых значений, без указания рабочего места. Аудит на стороне СУБД не включён. Доказать, кто и что изменил, невозможно.",
+                  "mitigation": "Персональные учётные записи; подробное журналирование (таблица, id, было/стало); аудит в СУБД (pgaudit или триггеры аудита)."
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 2,
+                "repudiation": 0,
+                "informationDisclosure": 3,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 4
+              }
+            }
+          },
+          {
+            "position": {
+              "x": 815,
+              "y": 250.0000000000005
+            },
+            "size": {
+              "width": 150,
+              "height": 150
+            },
+            "attrs": {
+              "text": {
+                "text": "P2. Adminer"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "a0012fee-775d-4b33-8ee7-1ffa65179f71"
+                },
+                {
+                  "group": "right",
+                  "id": "3fd0f7fa-2ea2-43c4-9173-f97ba0b55aff"
+                },
+                {
+                  "group": "bottom",
+                  "id": "fc5f57b3-bd9f-4dd3-8a85-02d4fa65e6e4"
+                },
+                {
+                  "group": "left",
+                  "id": "1d2a5029-060e-42bf-a526-4dcdb9f5087b"
+                }
+              ]
+            },
+            "id": "0b9d4266-381a-4972-a3e4-37be72a66276",
+            "zIndex": 4,
+            "data": {
+              "type": "tm.Process",
+              "name": "P2. Adminer",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": true,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "a103a2c2-f10f-45ab-9d59-77e635b36b9c",
+                  "title": "Злоупотребление скоростью (Expedition)",
+                  "status": "NotApplicable",
+                  "severity": "Low",
+                  "type": "Tampering",
+                  "description": "Не применима. Adminer — инструмент администратора БД; операций, где скорость запросов даёт выгоду, в нём нет.",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 7,
+                  "score": ""
+                },
+                {
+                  "id": "0f8bdad1-bb4c-47ca-bef7-554c29e79e75",
+                  "title": "УГ-15. Получение прав суперпользователя СУБД через Adminer из локальной сети (Footprinting)",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Elevation of privilege",
+                  "description": "Adminer опубликован на порту 8080 на всех сетевых интерфейсах хоста (0.0.0.0) без собственной аутентификации и ограничения по IP. postgres_admin — суперпользователь. Нарушитель в той же сети (общежитие, публичный Wi-Fi) открывает http://<IP>:8080 и с известным паролем получает полный контроль над СУБД: может удалить базу или выполнить команды ОС через COPY ... PROGRAM.",
+                  "mitigation": "Не запускать Adminer в рабочем окружении или публиковать его как 127.0.0.1:8080:8080; не использовать суперпользователя для повседневной работы; правила межсетевого экрана.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 8,
+                  "score": "9,0"
+                },
+                {
+                  "id": "f9023fa8-9ee8-4d4b-a35d-9ca0bb348078",
+                  "title": "Сканирование уязвимостей (Vulnerability scanning)",
+                  "status": "NotApplicable",
+                  "severity": "Low",
+                  "type": "Information disclosure",
+                  "description": "Не применима. Дублирует угрозу #8: обнаружение открытого Adminer сканированием портов учтено в УГ-15.",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 10,
+                  "score": ""
+                },
+                {
+                  "id": "9dd23385-76aa-490f-b282-991fd1376ade",
+                  "title": "УГ-12. Отказ в обслуживании СУБД из-за исчерпания подключений и ресурсов (Denial of Service)",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Denial of service",
+                  "description": "Нагрузка выглядит как обычная работа, но исчерпывает ресурсы СУБД: через Adminer, открытый в локальной сети, можно запускать тяжёлые запросы без ограничений, а через опубликованный порт 5432 — массово открывать соединения (в том числе без аутентификации) и исчерпать лимит max_connections (100). В приложении нет ограничения на число добавляемых строк (пункты 8, 9), выборка идёт без LIMIT, у контейнеров нет лимитов CPU и памяти.",
+                  "mitigation": "Не публиковать 5432; ALTER ROLE app_user CONNECTION LIMIT; пул соединений (pgbouncer); statement_timeout; LIMIT и постраничный вывод; лимиты ресурсов контейнеров.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 11,
+                  "score": "7,6"
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 4,
+                "denialOfService": 2,
+                "elevationOfPrivilege": 2
+              }
+            }
+          },
+          {
+            "position": {
+              "x": 780,
+              "y": 90
+            },
+            "size": {
+              "width": 220,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "D1. БД PostgreSQL testdb"
+              },
+              "topLine": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "2fdf0b4e-1a90-4305-9b9e-ee7eabca5804"
+                },
+                {
+                  "group": "right",
+                  "id": "7140b4f5-1b68-46ee-934f-3ad0d2c4aa0f"
+                },
+                {
+                  "group": "bottom",
+                  "id": "af483ffd-f060-40df-b112-5633b9a8f1b4"
+                },
+                {
+                  "group": "left",
+                  "id": "961bc753-143e-446d-a592-706ae51a7408"
+                }
+              ]
+            },
+            "id": "0e4306af-ebee-4cfd-9f19-110a32b7a8cf",
+            "zIndex": 5,
+            "data": {
+              "type": "tm.Store",
+              "name": "D1. БД PostgreSQL testdb",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isALog": false,
+              "isEncrypted": false,
+              "isSigned": false,
+              "storesCredentials": true,
+              "storesInventory": false,
+              "threats": [
+                {
+                  "id": "6e73d726-a7e7-48f3-bd6d-d0992e0bb9c7",
+                  "title": "УГ-09. Несанкционированное ознакомление с персональными данными покупателей (Scraping)",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "Таблица customers содержит ФИО, email и телефон. app_user имеет SELECT на все колонки, пункт меню 1 выводит таблицу целиком. Файлы тома postgres_data не зашифрованы. Любой оператор или лицо с доступом к хосту получает все ПДн.",
+                  "mitigation": "SELECT только на нужные колонки или через представления с маскированием; шифрование диска хоста; ограничение доступа к тому Docker.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 12,
+                  "score": "7,4"
+                },
+                {
+                  "id": "ad85a295-3667-41b2-8c46-3b98c6d62913",
+                  "title": "Искажение показателей (Skewing)",
+                  "status": "NotApplicable",
+                  "severity": "Low",
+                  "type": "Tampering",
+                  "description": "Не применима. В БД нет счётчиков, рейтингов и метрик, которые можно исказить массовыми запросами.",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 13,
+                  "score": ""
+                },
+                {
+                  "id": "e2571361-6d6b-4138-84c3-d58bcb02cc36",
+                  "title": "Размещение вредоносного содержимого (Spamming)",
+                  "status": "NotApplicable",
+                  "severity": "Low",
+                  "type": "Tampering",
+                  "description": " Не применима. Данные вносит только оператор через консольное приложение; внешние пользователи ничего не публикуют.",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 14,
+                  "score": ""
+                },
+                {
+                  "id": "8a27a5b7-9933-4010-987d-207b5fcccdc0",
+                  "title": "Подбор учётных данных (Credential cracking)",
+                  "status": "NotApplicable",
+                  "severity": "Low",
+                  "type": "Information disclosure",
+                  "description": "Не применима. Угроза актуальна, но перенесена на внешнюю сущность E1 как УГ-01 «Подбор пароля учётной записи app_user»: её суть — подмена оператора, а по STRIDE-per-element подмена (Spoofing) относится к внешним сущностям, а не к хранилищам.",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 15,
+                  "score": ""
+                },
+                {
+                  "id": "d065fe5e-aa5f-480f-a781-f858b88e9d9e",
+                  "title": "Массовое создание учётных записей (Account creation)",
+                  "status": "NotApplicable",
+                  "severity": "Low",
+                  "type": "Tampering",
+                  "description": "Не применима. В системе нет саморегистрации: учётные записи СУБД создаёт только администратор скриптом sql/03_user.sql.",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 16,
+                  "score": ""
+                },
+                {
+                  "id": "9198ed4f-f756-491c-b45d-696e522f1b86",
+                  "title": "Агрегация учётных записей (Account aggregation)",
+                  "status": "NotApplicable",
+                  "severity": "Low",
+                  "type": "Information disclosure",
+                  "description": "Не применима. У покупателей нет учётных записей, у операторов одна общая учётная запись — собирать и объединять нечего.",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 17,
+                  "score": ""
+                },
+                {
+                  "id": "862f7263-face-4f0d-b321-2086f2d56475",
+                  "number": 35,
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "title": "УГ-02. Несанкционированное изменение данных оператором",
+                  "type": "Tampering",
+                  "status": "Open",
+                  "severity": "High",
+                  "score": "7,6",
+                  "description": "По требованиям задания №3 app_user имеет право UPDATE на все колонки всех таблиц, разделения ролей и ограничений на уровне строк нет. Оператор (внутренний нарушитель) может снизить цену товара или позиции заказа, перепривязать заказ к другому покупателю, сменить статус заказа.",
+                  "mitigation": "Разделить роли (оператор / менеджер); выдавать UPDATE только на нужные колонки (например, orders.status); триггеры аудита изменений; дополнительные CHECK-ограничения."
+                },
+                {
+                  "id": "7321eadd-0ec0-4113-8bcb-99eb35ecd33e",
+                  "number": 41,
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "title": "УГ-13. Потеря данных БД при сбое или удалении тома",
+                  "type": "Denial of service",
+                  "status": "Open",
+                  "severity": "High",
+                  "score": "6,8",
+                  "description": "Резервное копирование не настроено, все данные хранятся в одном томе Docker. Команда docker compose down -v (приведена в README) безвозвратно удаляет том. При сбое диска данные восстановить нельзя.",
+                  "mitigation": "Регулярный pg_dump по расписанию; хранение копий вне хоста; периодическая проверка восстановления."
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 5,
+                "denialOfService": 0
+              }
+            }
+          },
+          {
+            "position": {
+              "x": 70,
+              "y": 660
+            },
+            "size": {
+              "width": 230,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "D2. Журнал logs/app.log"
+              },
+              "topLine": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "2fdf0b4e-1a90-4305-9b9e-ee7eabca5804"
+                },
+                {
+                  "group": "right",
+                  "id": "7140b4f5-1b68-46ee-934f-3ad0d2c4aa0f"
+                },
+                {
+                  "group": "bottom",
+                  "id": "af483ffd-f060-40df-b112-5633b9a8f1b4"
+                },
+                {
+                  "group": "left",
+                  "id": "961bc753-143e-446d-a592-706ae51a7408"
+                }
+              ]
+            },
+            "id": "83333cad-bc8e-4638-974a-f3f469507ff4",
+            "zIndex": 6,
+            "data": {
+              "type": "tm.Store",
+              "name": "D2. Журнал logs/app.log",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isALog": true,
+              "isEncrypted": false,
+              "isSigned": false,
+              "storesCredentials": false,
+              "storesInventory": false,
+              "threats": [
+                {
+                  "id": "474c4f30-6131-48ac-aa07-38d904bfc961",
+                  "title": "Сбор данных из журнала (Scraping)",
+                  "status": "NotApplicable",
+                  "severity": "Low",
+                  "type": "Information disclosure",
+                  "description": "Не применима. Дублирует угрозу #28: сбор ПДн и технических сведений из журнала учтён в УГ-10.",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 25,
+                  "score": ""
+                },
+                {
+                  "id": "e36f8d07-2965-414e-8200-11dd6f211592",
+                  "title": "Искажение показателей (Skewing)",
+                  "status": "NotApplicable",
+                  "severity": "Low",
+                  "type": "Tampering",
+                  "description": "Не применима. Журнал пишет только приложение; метрик, зависящих от частоты запросов, в нём нет.",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 26,
+                  "score": ""
+                },
+                {
+                  "id": "27f2816e-9cbf-44e1-9a87-3013c4dc37c0",
+                  "title": "Размещение вредоносного содержимого (Spamming)",
+                  "status": "NotApplicable",
+                  "severity": "Low",
+                  "type": "Tampering",
+                  "description": "Не применима. В журнал пишет только приложение; внешнего пользовательского содержимого нет.",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 27,
+                  "score": ""
+                },
+                {
+                  "id": "7c1a220d-bed6-4e3e-8055-2c4c63c5529b",
+                  "title": "УГ-10. Раскрытие ПДн и технических сведений через журнал (Log contains sensetive data)",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "В logs/app.log пишутся полные тексты ошибок PostgreSQL: имена таблиц и ограничений, внутренний IP сервера, значения ключей, в том числе email покупателей (например: Ключ \"(email)=(ivanov@mail.ru)\" уже существует). Файл не шифруется.",
+                  "mitigation": "Маскирование ПДн перед записью в журнал; ограничение прав на файл; срок хранения и ротация журнала.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 28,
+                  "score": "6,6"
+                },
+                {
+                  "id": "677c13a1-aaa3-457a-8059-928ecb1b416a",
+                  "number": 37,
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "title": "УГ-04. Изменение или удаление записей журнала",
+                  "type": "Tampering",
+                  "status": "Open",
+                  "severity": "High",
+                  "score": "6,0",
+                  "description": "logs/app.log — обычный текстовый файл на хосте, доступный на запись любому, у кого есть доступ к папке проекта. Контроля целостности нет, поэтому нарушитель может удалить следы своих действий или добавить ложные записи.",
+                  "mitigation": "Передача журнала в централизованную систему (syslog, ELK); режим только дозаписи; хэш-цепочки или подпись записей; ротация с архивированием."
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 2,
+                "denialOfService": 0
+              }
+            }
+          },
+          {
+            "position": {
+              "x": 70,
+              "y": 580
+            },
+            "size": {
+              "width": 260,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "D3. Конфигурация"
+              },
+              "topLine": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "2fdf0b4e-1a90-4305-9b9e-ee7eabca5804"
+                },
+                {
+                  "group": "right",
+                  "id": "7140b4f5-1b68-46ee-934f-3ad0d2c4aa0f"
+                },
+                {
+                  "group": "bottom",
+                  "id": "af483ffd-f060-40df-b112-5633b9a8f1b4"
+                },
+                {
+                  "group": "left",
+                  "id": "961bc753-143e-446d-a592-706ae51a7408"
+                }
+              ]
+            },
+            "id": "e9c95883-5103-4d29-aad0-fe84165b451a",
+            "zIndex": 7,
+            "data": {
+              "type": "tm.Store",
+              "name": "D3. Конфигурация",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isALog": false,
+              "isEncrypted": false,
+              "isSigned": false,
+              "storesCredentials": true,
+              "storesInventory": false,
+              "threats": [
+                {
+                  "id": "8e51cc78-a813-4fc6-ba55-abb8dbce107c",
+                  "title": "УГ-08. Раскрытие паролей СУБД через публичный репозиторий (Scraping)",
+                  "status": "Open",
+                  "severity": "Critical",
+                  "type": "Information disclosure",
+                  "description": "Пароли postgres_admin (example — значение из примера в документации образа postgres) и app_user (AppPassword123) записаны открытым текстом в compose.yaml и sql/03_user.sql. Репозиторий на GitHub публичный. Любой, кто получит сетевой доступ к портам 5432 или 8080, войдёт как суперпользователь СУБД.",
+                  "mitigation": "Хранить секреты вне репозитория (.env в .gitignore, Docker secrets, POSTGRES_PASSWORD_FILE); сменить опубликованные пароли; сложные пароли и их регулярная смена.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 18,
+                  "score": "9,6"
+                },
+                {
+                  "id": "56d6a048-0aad-40e1-9cb5-5c267b10acc5",
+                  "title": "Искажение показателей (Skewing)",
+                  "status": "NotApplicable",
+                  "severity": "Low",
+                  "type": "Tampering",
+                  "description": "Не применима. Конфигурация — статические файлы проекта; метрик и счётчиков в них нет.",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 19,
+                  "score": ""
+                },
+                {
+                  "id": "f76556b8-f41d-4df0-8088-12086adffa0e",
+                  "title": "Размещение вредоносного содержимого (Spamming)",
+                  "status": "NotApplicable",
+                  "severity": "Low",
+                  "type": "Tampering",
+                  "description": "Не применима. Файлы конфигурации меняет только разработчик; внешнего содержимого нет. Подмена конфигурации учтена в УГ-03.",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 20,
+                  "score": ""
+                },
+                {
+                  "id": "2fe91bf8-7884-4853-8f46-010810bbb521",
+                  "title": "Подбор учётных данных (Credential cracking)",
+                  "status": "NotApplicable",
+                  "severity": "Low",
+                  "type": "Information disclosure",
+                  "description": "Не применима. Пароли в конфигурации не нужно подбирать — они хранятся открытым текстом. Угроза учтена как УГ-08 (угроза #18).",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 21,
+                  "score": ""
+                },
+                {
+                  "id": "9bfa7387-b56e-4f5a-9e81-b6054b07ed25",
+                  "title": "Массовое создание учётных записей (Account creation)",
+                  "status": "NotApplicable",
+                  "severity": "Low",
+                  "type": "Tampering",
+                  "description": "Не применима. В системе нет саморегистрации: учётные записи создаёт только администратор скриптом sql/03_user.sql.",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 22,
+                  "score": ""
+                },
+                {
+                  "id": "917bb1f2-5678-4f33-840e-21332bb66dd8",
+                  "title": "Агрегация учётных записей (Account aggregation)",
+                  "status": "NotApplicable",
+                  "severity": "Low",
+                  "type": "Information disclosure",
+                  "description": "Не применима. У покупателей нет учётных записей, у операторов одна общая учётная запись — собирать и объединять нечего.",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 23,
+                  "score": ""
+                },
+                {
+                  "id": "1fa8d406-9c2b-43cf-8805-00870c34e98c",
+                  "number": 36,
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "title": "УГ-03. Подмена файла конфигурации (перенаправление на ложный сервер БД)",
+                  "type": "Tampering",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "score": "5,8",
+                  "description": "config.json и .env хранятся в открытом виде. Изменив host на адрес своего сервера, нарушитель направит подключение туда. Приложение не проверяет подлинность сервера (нет TLS с проверкой сертификата), поэтому ложный сервер может запросить пароль открытым текстом и получить логин и пароль оператора.",
+                  "mitigation": "Права только на чтение для файлов конфигурации; sslmode=verify-full и сертификат сервера; параметр require_auth=scram-sha-256; контроль целостности образа."
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 2,
+                "denialOfService": 0
+              }
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null,
+                "strokeWidth": 1.5
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "F1. Логин, пароль, команды",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": [
+                "e63af243-ef9b-435e-a556-394271206c90"
+              ]
+            },
+            "labels": [
+              "F1. Логин, пароль, команды"
+            ],
+            "id": "825a3dcc-01fc-4b84-80e9-b7196d270a03",
+            "source": {
+              "cell": "c5fa78fb-2353-44ff-a986-44cc275b60d4",
+              "port": "f4d0dd56-1e4b-46e1-8b6b-9b7d3c8a786b"
+            },
+            "target": {
+              "cell": "74e3a679-3a7f-4ae3-9988-a6619ea9fba4",
+              "port": "fc5f57b3-bd9f-4dd3-8a85-02d4fa65e6e4"
+            },
+            "vertices": []
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null,
+                "strokeWidth": 1.5
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "F2. Результаты, сообщения",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": [
+                "e63af243-ef9b-435e-a556-394271206c90"
+              ]
+            },
+            "labels": [
+              "F2. Результаты, сообщения"
+            ],
+            "id": "4ecb5c2f-737e-4178-b18b-bc0ca710278d",
+            "source": {
+              "cell": "74e3a679-3a7f-4ae3-9988-a6619ea9fba4",
+              "port": "3fd0f7fa-2ea2-43c4-9173-f97ba0b55aff"
+            },
+            "target": {
+              "cell": "c5fa78fb-2353-44ff-a986-44cc275b60d4",
+              "port": "f4d0dd56-1e4b-46e1-8b6b-9b7d3c8a786b"
+            },
+            "vertices": [
+              {
+                "x": 650,
+                "y": 230
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null,
+                "strokeWidth": 1.5
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "F3. SQL-запросы, учётные данные",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "TCP 5432",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "F3. SQL-запросы, учётные данные"
+            ],
+            "id": "54c31479-7992-4d0a-8967-67a9569f86b3",
+            "source": {
+              "cell": "74e3a679-3a7f-4ae3-9988-a6619ea9fba4",
+              "port": "3fd0f7fa-2ea2-43c4-9173-f97ba0b55aff"
+            },
+            "target": {
+              "cell": "0e4306af-ebee-4cfd-9f19-110a32b7a8cf",
+              "port": "961bc753-143e-446d-a592-706ae51a7408"
+            },
+            "vertices": [
+              {
+                "x": 650,
+                "y": 80
+              },
+              {
+                "x": 720,
+                "y": 80
+              },
+              {
+                "x": 760,
+                "y": 100
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null,
+                "strokeWidth": 1.5
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "F4. Результаты запросов",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "F4. Результаты запросов"
+            ],
+            "id": "f7afa2a8-9193-4aab-9ea1-f71eda89e759",
+            "source": {
+              "cell": "0e4306af-ebee-4cfd-9f19-110a32b7a8cf",
+              "port": "2fdf0b4e-1a90-4305-9b9e-ee7eabca5804"
+            },
+            "target": {
+              "cell": "74e3a679-3a7f-4ae3-9988-a6619ea9fba4",
+              "port": "3fd0f7fa-2ea2-43c4-9173-f97ba0b55aff"
+            },
+            "vertices": [
+              {
+                "x": 860,
+                "y": 60
+              },
+              {
+                "x": 730,
+                "y": -5
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null,
+                "strokeWidth": 1.5
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "F5. Записи журнала",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": [
+                "570c91ec-8fe6-4874-a25e-f0ee13d47ca3",
+                "e63af243-ef9b-435e-a556-394271206c90"
+              ]
+            },
+            "labels": [
+              "F5. Записи журнала"
+            ],
+            "id": "c1e50598-968c-4a2a-a230-2dc7d22d529e",
+            "source": {
+              "cell": "74e3a679-3a7f-4ae3-9988-a6619ea9fba4",
+              "port": "1d2a5029-060e-42bf-a526-4dcdb9f5087b"
+            },
+            "target": {
+              "cell": "83333cad-bc8e-4638-974a-f3f469507ff4",
+              "port": "961bc753-143e-446d-a592-706ae51a7408"
+            },
+            "vertices": [
+              {
+                "x": 90,
+                "y": 170
+              },
+              {
+                "x": 70,
+                "y": 340
+              },
+              {
+                "x": 20,
+                "y": 510
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null,
+                "strokeWidth": 1.5
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "F6. Параметры подключения",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": [
+                "570c91ec-8fe6-4874-a25e-f0ee13d47ca3",
+                "e63af243-ef9b-435e-a556-394271206c90"
+              ]
+            },
+            "labels": [
+              "F6. Параметры подключения"
+            ],
+            "id": "9b360a7c-3e86-4345-8a8f-c73607cf618f",
+            "source": {
+              "cell": "e9c95883-5103-4d29-aad0-fe84165b451a",
+              "port": "2fdf0b4e-1a90-4305-9b9e-ee7eabca5804"
+            },
+            "target": {
+              "cell": "74e3a679-3a7f-4ae3-9988-a6619ea9fba4",
+              "port": "1d2a5029-060e-42bf-a526-4dcdb9f5087b"
+            },
+            "vertices": [
+              {
+                "x": 200,
+                "y": 280
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "F7. Логин, пароль, SQL (HTTP 8080)",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": true,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "3954a576-155f-4ca4-b8e9-e7c6adf617ab",
+                  "title": "УГ-11. Перехват данных между компонентами (нет шифрования канала) (Use encryption)",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "Adminer работает по HTTP (F7, F8), поэтому логин и пароль администратора и данные из БД передаются открытым текстом. Соединения с PostgreSQL (F3, F4, F9, F10) тоже идут без TLS. Внутри Docker-сети трафик не выходит за пределы хоста, но порты 8080 и 5432 опубликованы, и обращения к ним из локальной сети можно перехватить.",
+                  "mitigation": "ssl=on в PostgreSQL и sslmode=verify-full в приложении; HTTPS для Adminer через обратный прокси; не публиковать порты наружу.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 29,
+                  "score": "6,4"
+                },
+                {
+                  "id": "c095a734-5091-4d51-89db-0e616a17d317",
+                  "title": "Сбор сведений о приложении (Fingerprinting)",
+                  "status": "NotApplicable",
+                  "severity": "Low",
+                  "type": "Information disclosure",
+                  "description": "Не применима. Учтена в угрозе #8 (УГ-15): страница входа Adminer показывает его версию и тип СУБД — это часть сбора сведений об открытом Adminer.",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 30,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [
+                "e63af243-ef9b-435e-a556-394271206c90"
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 2,
+                "denialOfService": 0
+              }
+            },
+            "labels": [
+              "F7. Логин, пароль, SQL (HTTP 8080)"
+            ],
+            "id": "4a1e9f8c-cf2e-46bc-97d9-33dc437a8ff9",
+            "source": {
+              "cell": "1ce789f8-d1e8-49cf-a819-7209e2ac0898",
+              "port": "8c2be464-ea8b-42a2-a4b0-d746e6e43946"
+            },
+            "target": {
+              "cell": "0b9d4266-381a-4972-a3e4-37be72a66276",
+              "port": "fc5f57b3-bd9f-4dd3-8a85-02d4fa65e6e4"
+            },
+            "vertices": [
+              {
+                "x": 840,
+                "y": 680
+              },
+              {
+                "x": 920,
+                "y": 680
+              },
+              {
+                "x": 990,
+                "y": 620
+              },
+              {
+                "x": 1040,
+                "y": 600
+              },
+              {
+                "x": 1040,
+                "y": 570
+              },
+              {
+                "x": 1000,
+                "y": 530
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "F8. HTML-страницы с данными",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": true,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "cc23db3d-28ac-4d6c-8b8f-44163827a10e",
+                  "title": "Используйте шифрование (Use encryption)",
+                  "status": "NotApplicable",
+                  "severity": "Low",
+                  "type": "Information disclosure",
+                  "description": "Не применима. Дублирует угрозу #29 (УГ-11): тот же канал HTTP 8080 в обратном направлении.",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 31,
+                  "score": ""
+                },
+                {
+                  "id": "6dff7a8e-a325-4c85-8312-2e29605040a8",
+                  "title": "Сбор сведений о приложении (Fingerprinting)",
+                  "status": "NotApplicable",
+                  "severity": "Low",
+                  "type": "Information disclosure",
+                  "description": "Не применима. Дублирует угрозу #30.",
+                  "mitigation": "",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 32,
+                  "score": ""
+                }
+              ],
+              "trustBoundaryIds": [
+                "e63af243-ef9b-435e-a556-394271206c90"
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 2,
+                "denialOfService": 0
+              }
+            },
+            "labels": [
+              "F8. HTML-страницы с данными"
+            ],
+            "id": "4a6f45a9-d7b6-43eb-93a3-920081e4d35f",
+            "source": {
+              "cell": "0b9d4266-381a-4972-a3e4-37be72a66276",
+              "port": "1d2a5029-060e-42bf-a526-4dcdb9f5087b"
+            },
+            "target": {
+              "cell": "1ce789f8-d1e8-49cf-a819-7209e2ac0898",
+              "port": "f4d0dd56-1e4b-46e1-8b6b-9b7d3c8a786b"
+            },
+            "vertices": []
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null,
+                "strokeWidth": 1.5
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "F9. SQL-запросы администратора",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "F9. SQL-запросы администратора"
+            ],
+            "id": "b740cb4b-1d6b-476e-a22d-fef0a5204824",
+            "source": {
+              "cell": "0b9d4266-381a-4972-a3e4-37be72a66276",
+              "port": "a0012fee-775d-4b33-8ee7-1ffa65179f71"
+            },
+            "target": {
+              "cell": "0e4306af-ebee-4cfd-9f19-110a32b7a8cf",
+              "port": "af483ffd-f060-40df-b112-5633b9a8f1b4"
+            },
+            "vertices": []
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null,
+                "strokeWidth": 1.5
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "F10. Результаты запросов",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "F10. Результаты запросов"
+            ],
+            "id": "12d091cf-f26a-45f4-a9da-9160a4aabbda",
+            "source": {
+              "cell": "0e4306af-ebee-4cfd-9f19-110a32b7a8cf",
+              "port": "7140b4f5-1b68-46ee-934f-3ad0d2c4aa0f"
+            },
+            "target": {
+              "cell": "0b9d4266-381a-4972-a3e4-37be72a66276",
+              "port": "3fd0f7fa-2ea2-43c4-9173-f97ba0b55aff"
+            },
+            "vertices": [
+              {
+                "x": 1150,
+                "y": 260
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "diagramTop": 1,
+    "reviewer": "Горбунов И.",
+    "threatTop": 41
+  }
+}

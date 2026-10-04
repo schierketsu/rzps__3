@@ -1,6 +1,8 @@
 import json
 import os
 import sys
+# ДОБАВЛЕНО ПО ЛАБОРАТОРНОЙ РАБОТЕ 4 В СООТВЕТСТВИИ С ПРОБЛЕМОЙ 3 (пауза между попытками входа)
+import time
 from datetime import datetime
 from getpass import getpass
 
@@ -20,6 +22,11 @@ TABLES = {
 
 # 6.7
 LOG_FILE = os.getenv("LOG_FILE")
+
+# ДОБАВЛЕНО ПО ЛАБОРАТОРНОЙ РАБОТЕ 4 В СООТВЕТСТВИИ С ПРОБЛЕМОЙ 3
+# Ограничение попыток входа: не больше 3 подряд, после неудачной — пауза (замедляет подбор пароля)
+MAX_LOGIN_ATTEMPTS = 3
+LOGIN_DELAY_SECONDS = 3
 
 
 # ---------------------------------------------------------------- логи
@@ -300,28 +307,66 @@ def load_config():
         return json.load(file)
 
 
+# ДОБАВЛЕНО ПО ЛАБОРАТОРНОЙ РАБОТЕ 4 В СООТВЕТСТВИИ С ПРОБЛЕМАМИ 3 И 5
+def connect_to_db(config):
+    """Спрашивает логин и пароль и подключается к БД. Даёт не больше MAX_LOGIN_ATTEMPTS попыток."""
+    for attempt in range(1, MAX_LOGIN_ATTEMPTS + 1):
+        username = input("Введите логин БД: ")
+        #6.6 getpass
+        password = getpass("Введите пароль БД: ")
+
+        connection_params = {
+            "host": config["host"],
+            "port": config["port"],
+            "dbname": config["database"],
+            "user": username,
+            "password": password,
+            # ПРОБЛЕМА 5: подключаемся только по зашифрованному каналу (TLS).
+            # Если сервер не поддерживает TLS, подключения не будет.
+            "sslmode": "require",
+        }
+
+        try:
+            connection = psycopg.connect(**connection_params)
+            log_info(f"Подключение к базе данных успешно (пользователь {username})")
+            return connection
+        except psycopg.Error as error:
+            log_error("Не удалось подключиться к базе данных. Проверьте логин и пароль "
+                      f"(попытка {attempt} из {MAX_LOGIN_ATTEMPTS}).", error)
+            # ПРОБЛЕМА 3: пауза после неудачной попытки
+            if attempt < MAX_LOGIN_ATTEMPTS:
+                time.sleep(LOGIN_DELAY_SECONDS)
+
+    log_error("Превышено число попыток входа. Работа завершена.")
+    sys.exit(1)
+
+
 def main():
     config = load_config()
 
-    username = input("Введите логин БД: ")
-    #6.6 getpass
-    password = getpass("Введите пароль БД: ")
-
-    connection_params = {
-        "host": config["host"],
-        "port": config["port"],
-        "dbname": config["database"],
-        "user": username,
-        "password": password
-    }
-
-    try:
-        connection = psycopg.connect(**connection_params)
-    except psycopg.Error as error:
-        log_error("Не удалось подключиться к базе данных. Проверьте логин и пароль.", error)
-        sys.exit(1)
-
-    log_info(f"Подключение к базе данных успешно (пользователь {username})")
+    # ИЗМЕНЕНО ПО ЛАБОРАТОРНОЙ РАБОТЕ 4 В СООТВЕТСТВИИ С ПРОБЛЕМАМИ 3 И 5
+    # (была одна попытка входа без ограничений и подключение без шифрования;
+    #  теперь вход вынесен в connect_to_db: до 3 попыток с паузой и только по TLS)
+    # username = input("Введите логин БД: ")
+    # #6.6 getpass
+    # password = getpass("Введите пароль БД: ")
+    #
+    # connection_params = {
+    #     "host": config["host"],
+    #     "port": config["port"],
+    #     "dbname": config["database"],
+    #     "user": username,
+    #     "password": password
+    # }
+    #
+    # try:
+    #     connection = psycopg.connect(**connection_params)
+    # except psycopg.Error as error:
+    #     log_error("Не удалось подключиться к базе данных. Проверьте логин и пароль.", error)
+    #     sys.exit(1)
+    #
+    # log_info(f"Подключение к базе данных успешно (пользователь {username})")
+    connection = connect_to_db(config)
 
     with connection:
         while True:
